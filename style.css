@@ -2,6 +2,7 @@
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 body {
@@ -15,8 +16,8 @@ body {
 }
 
 header {
-    width: 85%;
-    height: 95%;
+    width: 75%;
+    height: 88%;
     border: 1px solid #C9035F;
     display: flex;
     flex-wrap: wrap;
@@ -63,7 +64,7 @@ header .main-music .song p{
     font-size: 12px;
     margin-top: 5px;
     text-align: left;
-    width: 70%;
+    width: 100%;
 }
 
 header .main-music .song span {
@@ -71,9 +72,34 @@ header .main-music .song span {
     margin-top: 2px; /* Add margin to separate the text from the image */
 }
 
+header .main-music h4 {
+    transition: color 0.3s ease; /* Add transition property for color */
+    font-weight: 200;
+}
+
+header .main-music h4:hover {
+    color: #C9035F;
+}
+
+header .main-music h4 span::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border: 2px solid #C9035F;
+    border-radius: 50%;
+    top: 8.5px;
+    left: -20px;
+    transition: 0.3s linear;
+}
+
+header .main-music h4:hover span::before {
+    color: #C9035F;
+}
+
 header .title {
     position: absolute;
-    font-size: 55px;
+    font-size: 40px;
     font-weight: 500;
     top: 10%;
     left: 50%;
@@ -93,7 +119,7 @@ header .player{
 
 header .menu-left h1{
     font-size: 20px;
-    margin: 20px 0px 0px 25px;
+    margin: 10px 0px 0px 15px;
     font-weight: 500;
 }
 
@@ -105,7 +131,7 @@ header .menu-left {
 }
 
 header .menu-left .playlist {
-  margin: 20px 0px 0px 20px; /* Increased margin-top for downward shift */
+  margin: 10px 0px 0px 20px; /* Increased margin-top for downward shift */
 }
 
 header .menu-left .playlist h4 {
@@ -147,7 +173,7 @@ header .menu-left .playlist h4:hover span::before {
 .playing-now {
     display: flex;
     align-items: center;
-    margin: 50px 0px 0px -56px; /* Increased margin-top for downward shift */
+    margin: 0px 0px 0px -56px; /* Increased margin-top for downward shift */
     border-left: none; /* Border on the left side */
     border-right: none; /* Border on the right side */
     border-top: 2px solid #C9035F; /* Border on the top side */
@@ -161,12 +187,74 @@ header .menu-left .playlist h4:hover span::before {
 
 .playing-now h3 {
     position: absolute;
-    left: 4.2%;
-    top: 92%;
+    left: 4.8%;
+    top: 90%;
 }
 
 .playing-now h4 {
     position: absolute;
-    left: 4.2%;
-    top: 95.5%;
+    left: 4.8%;
+    top: 94%;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.player i{
+    font-size: 2.2em;
+    color: #d4d4d4;
+    margin: 12px;
+}
+
+.play-buttons {
+    position: absolute;
+    top: 88.2%;
+    left:75%;
+}
+
+#song-slider {
+    position: absolute;
+    font-size: 2.5em;
+    top: 5%;
+    left:-300%;
+    background-color: #C9035F;
+}
+
+.player span {
+    color: #d4d4d4;
+    width: 32px;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0px 0px 0px 20px;
+}
+
+#start-timer {
+    position: absolute;
+    left: 42.5%;
+    top: 90.5%;
+}
+
+#end-timer {
+    position: absolute;
+    left: 70.5%;
+    top: 90.5%;
+}
+
+#song-now {
+    position: absolute;
+    font-size: 20px;
+    width: 100%;
+    left: 16%;
+    top: 88%;
+}
+
+#song-now h5{
+    position: absolute;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#song-now img{
+    position: absolute;
+    left: -3.7%;
+    top: 10%;
 }
