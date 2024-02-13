@@ -17,7 +17,7 @@ body {
 header {
     width: 85%;
     height: 95%;
-    border: 1px solid #DD0369;
+    border: 1px solid #C9035F;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
@@ -25,16 +25,16 @@ header {
 
 header .menu-left, .main-music {
     position: relative;
-    width: 28%;
+    width: 27%;
     height: 90%;
-    border: 1px solid #DD0369;
+    border: 1px solid #C9035F;
     background-color: #2a2f3f;
     box-shadow: 5px 0px 2px #000;
     color: #F5FBEF;
 }
 
 header .main-music {
-    width: 72%;
+    width: 73%;
     background-color: #161925;
     display: flex;
     align-items: center;
@@ -86,9 +86,9 @@ header .title {
 header .player{
     width: 100%;
     height: 10%;
-    background-color:#453643;
-    box-shadow: 5px 3px 8px #453643;
-    border: 1px solid #DD0369;
+    background-color:#1D2234;
+    box-shadow: 5px 3px 8px #1D2234;
+    border: 1px solid #C9035F;
 }
 
 header .menu-left h1{
@@ -98,13 +98,14 @@ header .menu-left h1{
 }
 
 header .menu-left {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: flex-start; /* Align items at the start */
+    align-items: flex-start; /* Align items at the start */
 }
 
 header .menu-left .playlist {
-  margin: 70px 0px 0px -40px; /* Increased margin-top for downward shift */
+  margin: 20px 0px 0px 20px; /* Increased margin-top for downward shift */
 }
 
 header .menu-left .playlist h4 {
@@ -118,7 +119,7 @@ header .menu-left .playlist h4 {
 }
 
 header .menu-left .playlist h4:hover {
-    color: #DD0369;
+    color: #C9035F;
 }
 
 header .menu-left .playlist h4 span {
@@ -132,7 +133,7 @@ header .menu-left .playlist h4 span::before {
     position: absolute;
     width: 4px;
     height: 4px;
-    border: 2px solid #DD0369;
+    border: 2px solid #C9035F;
     border-radius: 50%;
     top: 8.5px;
     left: -20px;
@@ -140,5 +141,32 @@ header .menu-left .playlist h4 span::before {
 }
 
 header .menu-left .playlist h4:hover span::before {
-    color: #DD0369;
+    color: #C9035F;
+}
+
+.playing-now {
+    display: flex;
+    align-items: center;
+    margin: 50px 0px 0px -56px; /* Increased margin-top for downward shift */
+    border-left: none; /* Border on the left side */
+    border-right: none; /* Border on the right side */
+    border-top: 2px solid #C9035F; /* Border on the top side */
+    border-bottom: none;
+    padding: 70.5px; /* Add padding to create space within the border */
+    padding-left: 75px; /* Adjust left padding */
+    padding-right: 40px;
+    padding-bottom: 0px;
+    padding-top: 20px;
+}
+
+.playing-now h3 {
+    position: absolute;
+    left: 4.2%;
+    top: 92%;
+}
+
+.playing-now h4 {
+    position: absolute;
+    left: 4.2%;
+    top: 95.5%;
 }
