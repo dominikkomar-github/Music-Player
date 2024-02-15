@@ -1,11 +1,11 @@
-const music = new Audio('songs/PostMalone.wav');
+const music = new Audio();
 
 const songs = [
     {
         id: '1',
         songName: `Rock Star <br>
         <h5>Post Malone</h5>`,
-        image: "img/1.jpg"
+        image: "img/1.jpg",
     },
 
     {
@@ -19,7 +19,7 @@ const songs = [
         id: '3',
         songName: `Bécane <br>
         <h5>Yamê</h5>`,
-        image: "img/3.jpg"
+        image: "img/3.jpg",
     },
 
     {
@@ -31,8 +31,8 @@ const songs = [
 
     {
         id: '5',
-        songName: `Rock Star <br>
-        <h5>Post Malone</h5>`,
+        songName: `Tot Musica <br>
+        <h5>Ado</h5>`,
         image: "img/5.jpg"
     },
 
@@ -78,7 +78,35 @@ const songs = [
         image: "img/11.jpg"
     },
 
-]
+    {
+        id: '11',
+        songName: `Rock Star <br>
+        <h5>Post Malone</h5>`,
+        image: "img/11.jpg"
+    },
+
+    {
+        id: '11',
+        songName: `Rock Star <br>
+        <h5>Post Malone</h5>`,
+        image: "img/11.jpg"
+    },
+
+    {
+        id: '11',
+        songName: `Rock Star <br>
+        <h5>Post Malone</h5>`,
+        image: "img/11.jpg"
+    },
+
+    {
+        id: '11',
+        songName: `Rock Star <br>
+        <h5>Post Malone</h5>`,
+        image: "img/11.jpg"
+    },
+
+];
 
 Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
     element.getElementsByTagName('img')[0].src = songs[i].image;
@@ -86,8 +114,10 @@ Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
     music.play();
 })
 
+//get the play button
 let masterPlay = document.getElementById('masterPlay');
 
+// play/pause
 masterPlay.addEventListener('click', ()=>{
     if (music.paused || music.currentTime <=0) {
         music.play();
@@ -97,16 +127,8 @@ masterPlay.addEventListener('click', ()=>{
         music.pause();
         masterPlay.classList.add('bi-play-circle-fill');
         masterPlay.classList.remove('bi-pause-circle-fill');
-        console.log(music.paused)
     }
 })
-
-const allPlayed = () => {
-    Array.from(document.getElementsByClassName('playlist')).forEach((element)=> {
-        element.classList.add('bi-play-circle-fill');
-        element.classList.remove('bi-pause-circle-fill');
-    })
-}
 
 let index = 0;
 let imageNowPlay = document.getElementById('image-now-play');
@@ -126,3 +148,100 @@ Array.from(document.getElementsByClassName('songItem')).forEach((element, i) => 
       nowImage.src = songs[i].image;
     });
   });
+
+  const songItems = document.querySelectorAll('.songItem');
+
+// Add click listener to each songItem
+songItems.forEach((songItem) => {
+    songItem.addEventListener('click', () => {
+      // Get the audio element associated with the clicked song
+      const audioElement = songItem.querySelector('audio');
+  
+      // Directly update the audio source and play
+      music.src = audioElement.src;
+      music.play();
+  
+      // Update masterPlay icon state (optional)
+      if (masterPlay) {
+        masterPlay.classList.remove('bi-play-circle-fill');
+        masterPlay.classList.add('bi-pause-circle-fill');
+      }
+    });
+  });
+
+music.addEventListener('ended', () => {
+  if (index < songs.length - 1) {
+    index++;
+    const nextSongItem = songs[index];
+    const nextSongAudio = nextSongItem.querySelector('audio');
+  
+    // Directly update the audio source and play
+    music.src = nextSongAudio.src;
+    music.play();
+
+    // Update time displays for the new song
+    const durationMinutes = Math.floor(music.duration / 60);
+    const durationSeconds = Math.floor(music.duration % 60).toString().padStart(2, '0');
+    endTimeDisplay.textContent = `-${durationMinutes}:${durationSeconds}`;
+  } else {
+    console.error("Invalid song index:", index);
+  }
+});
+
+const songSlider = document.getElementById('song-slider');
+const startTimeDisplay = document.getElementById('start-timer');
+const endTimeDisplay = document.getElementById('end-timer');
+
+// ... initial audio setup, including getting the total duration
+
+songSlider.addEventListener('input', (event) => {
+  const percentage = parseFloat(event.target.value) / 100;
+  const currentTime = percentage * music.duration;
+
+  // Update start time display
+  const startMinutes = Math.floor(currentTime / 60);
+  const startSeconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+  startTimeDisplay.textContent = `${startMinutes}:${startSeconds}`;
+
+  // Update end time display (remaining time)
+  const remainingTime = music.duration - currentTime;
+  const remainingMinutes = Math.floor(remainingTime / 60);
+  const remainingSeconds = Math.floor(remainingTime % 60).toString().padStart(2, '0');
+  endTimeDisplay.textContent = `-${remainingMinutes}:${remainingSeconds}`;
+});
+
+setInterval(() => {
+  const percentage = (music.currentTime / music.duration) * 100;
+  songSlider.value = percentage;
+
+  // Update time displays using current playback time
+  const currentTime = music.currentTime;
+  const currentMinutes = Math.floor(currentTime / 60);
+  const currentSeconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+  startTimeDisplay.textContent = `${currentMinutes}:${currentSeconds}`;
+
+  const remainingTime = music.duration - currentTime;
+  const remainingMinutes = Math.floor(remainingTime / 60);
+  const remainingSeconds = Math.floor(remainingTime % 60).toString().padStart(2, '0');
+  endTimeDisplay.textContent = `-${remainingMinutes}:${remainingSeconds}`;
+}, 100);
+
+
+
+//VOLUME SLIDER FEATURE
+const volumeSlider = document.getElementById('volume-slider');
+
+// Set initial volume to 20%
+music.volume = 0.2;
+
+// Set slider value to 20% to match initial volume
+volumeSlider.value = 20;
+
+// Event listener for changes on the volume slider
+volumeSlider.addEventListener('change', (event) => {
+  // Get the new volume value (percentage) from the slider
+  const newVolume = parseFloat(event.target.value) / 100;
+
+  // Set the audio element's volume property
+  music.volume = newVolume;
+});

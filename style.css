@@ -179,7 +179,7 @@ header .menu-left .playlist h4:hover span::before {
     border-top: 2px solid #C9035F; /* Border on the top side */
     border-bottom: none;
     padding: 70.5px; /* Add padding to create space within the border */
-    padding-left: 75px; /* Adjust left padding */
+    padding-left: 72px; /* Adjust left padding */
     padding-right: 40px;
     padding-bottom: 0px;
     padding-top: 20px;
@@ -187,7 +187,7 @@ header .menu-left .playlist h4:hover span::before {
 
 .playing-now h3 {
     position: absolute;
-    left: 4.8%;
+    left: 4.5%;
     top: 90%;
 }
 
@@ -207,15 +207,22 @@ header .menu-left .playlist h4:hover span::before {
 
 .play-buttons {
     position: absolute;
-    top: 88.2%;
+    font-size: 0.8em;
+    top: 87.5%;
     left:75%;
+    z-index: 100; 
 }
+
+#masterPlay {
+    outline: none; /* Remove default outline */
+    box-shadow: none; /* Remove default shadow */
+  }
 
 #song-slider {
     position: absolute;
-    font-size: 2.5em;
-    top: 5%;
-    left:-300%;
+    font-size: 3em;
+    top: 20%;
+    left:-380%;
     background-color: #C9035F;
 }
 
@@ -229,14 +236,14 @@ header .menu-left .playlist h4:hover span::before {
 
 #start-timer {
     position: absolute;
-    left: 42.5%;
-    top: 90.5%;
+    left: 39.5%;
+    top: 90.4%;
 }
 
 #end-timer {
     position: absolute;
-    left: 70.5%;
-    top: 90.5%;
+    left: 66.3%;
+    top: 90.4%;
 }
 
 #song-now {
@@ -257,4 +264,10 @@ header .menu-left .playlist h4:hover span::before {
     position: absolute;
     left: -3.7%;
     top: 10%;
+}
+
+#volume-slider {
+    position: absolute;
+    right: 1%;
+    top: 95%;
 }
