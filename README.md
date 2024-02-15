@@ -14,3 +14,4 @@ TO-DO:
 - Implement the "History" feature where the last songs played will be displayed on the top left.
 - Implement AutoPlay, so when the current song finishes, next one will be played.
 - Make the "Next/Previous" buttons work.
+- Add more songs.
