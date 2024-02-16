@@ -108,16 +108,17 @@ const songs = [
 
 ];
 
+// Initialize the array
 Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
     element.getElementsByTagName('img')[0].src = songs[i].image;
     element.getElementsByTagName('p')[0].innerHTML = songs[i].songName;
     music.play();
 })
 
-//get the play button
+// Get the play button
 let masterPlay = document.getElementById('masterPlay');
 
-// play/pause
+// Play/pause
 masterPlay.addEventListener('click', ()=>{
     if (music.paused || music.currentTime <=0) {
         music.play();
@@ -156,12 +157,12 @@ songItems.forEach((songItem) => {
     songItem.addEventListener('click', () => {
       // Get the audio element associated with the clicked song
       const audioElement = songItem.querySelector('audio');
-  
+      
       // Directly update the audio source and play
       music.src = audioElement.src;
       music.play();
   
-      // Update masterPlay icon state (optional)
+      // Update masterPlay icon state
       if (masterPlay) {
         masterPlay.classList.remove('bi-play-circle-fill');
         masterPlay.classList.add('bi-pause-circle-fill');
@@ -188,15 +189,28 @@ music.addEventListener('ended', () => {
   }
 });
 
+// Slider and timers
 const songSlider = document.getElementById('song-slider');
 const startTimeDisplay = document.getElementById('start-timer');
 const endTimeDisplay = document.getElementById('end-timer');
 
-// ... initial audio setup, including getting the total duration
-
 songSlider.addEventListener('input', (event) => {
   const percentage = parseFloat(event.target.value) / 100;
   const currentTime = percentage * music.duration;
+
+  //Fast Forward/Backward
+  songSlider.addEventListener('click', (event) => {
+  const sliderWidth = songSlider.offsetWidth;
+  const clickPosition = event.offsetX;
+  const percentage = clickPosition / sliderWidth;
+  const newTime = percentage * music.duration;
+
+  // Update music playback time
+  music.currentTime = newTime;
+
+  // Update time displays
+  updateTimeDisplays(newTime);
+});
 
   // Update start time display
   const startMinutes = Math.floor(currentTime / 60);
@@ -228,7 +242,7 @@ setInterval(() => {
 
 
 
-//VOLUME SLIDER FEATURE
+// VOLUME SLIDER FEATURE
 const volumeSlider = document.getElementById('volume-slider');
 
 // Set initial volume to 20%
