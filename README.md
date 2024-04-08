@@ -1,6 +1,7 @@
 # Music-Player
  Javascript music player
-![image](https://github.com/dominikkomar-github/Music-Player/assets/46048127/c6ac3966-fc38-4aaf-a3be-135a98aef4e4)
+![image](https://github.com/dominikkomar-github/Music-Player/assets/46048127/1b0421d2-e464-4c25-b5af-52da0bc0f4ab)
+
 
 Features:
 
@@ -12,7 +13,7 @@ Features:
 
 TO-DO:
 
-- Implement the "History" feature where the last songs played will be displayed on the top left.
+(DONE) Implement the "History" feature where the last songs played will be displayed on the top left.
 - Implement AutoPlay, so the next one will be played when the current song finishes.
 - Make the "Next/Previous" buttons work.
 - Add more songs.
