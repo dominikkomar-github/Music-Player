@@ -131,7 +131,7 @@ header .menu-left {
 }
 
 header .menu-left .playlist {
-  margin: 10px 0px 0px 20px; /* Increased margin-top for downward shift */
+  margin: 20px 0px 0px 25px; /* Increased margin-top for downward shift */
 }
 
 header .menu-left .playlist h4 {
@@ -155,7 +155,6 @@ header .menu-left .playlist h4 span {
 }
 
 header .menu-left .playlist h4 span::before {
-    content: '';
     position: absolute;
     width: 4px;
     height: 4px;
@@ -271,3 +270,20 @@ header .menu-left .playlist h4:hover span::before {
     right: 1%;
     top: 95%;
 }
+
+.historyItem {
+  display: flex; /* Enable flexible box layout */
+  align-items: center; /* Align content vertically */
+  margin-bottom: -10px;
+  top: 3px;
+  left: 30px;
+}
+  
+  .historyItem img {
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    margin-left: -50px; /* Add margin for spacing */
+    position: absolute;
+    top: 3px;
+    left: 20px;
+  }
